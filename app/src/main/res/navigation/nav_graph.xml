@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/home">
+
+    <fragment
+        android:id="@+id/home"
+        android:name="com.kursatkumsuz.bootcampfinalprojecttravelapp.presentation.homescreen.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/detail"
+        android:name="com.kursatkumsuz.bootcampfinalprojecttravelapp.presentation.detailscreen.DetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail" />
+    <fragment
+        android:id="@+id/search"
+        android:name="com.kursatkumsuz.bootcampfinalprojecttravelapp.presentation.searchscreen.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" />
+    <fragment
+        android:id="@+id/guide"
+        android:name="com.kursatkumsuz.bootcampfinalprojecttravelapp.presentation.guidescreen.GuideFragment"
+        android:label="fragment_guide"
+        tools:layout="@layout/fragment_guide" />
+    <fragment
+        android:id="@+id/trip"
+        android:name="com.kursatkumsuz.bootcampfinalprojecttravelapp.presentation.tripscreen.TripFragment"
+        android:label="fragment_trip"
+        tools:layout="@layout/fragment_trip" />
+</navigation>
