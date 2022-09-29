@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/ic_home_selector" />
+
+    <item
+        android:id="@+id/search"
+        android:icon="@drawable/ic_search_selector" />
+
+    <item
+        android:id="@+id/trip"
+        android:icon="@drawable/ic_trip_selector" />
+
+    <item
+        android:id="@+id/guide"
+        android:icon="@drawable/ic_guide_selector" />
+</menu>
