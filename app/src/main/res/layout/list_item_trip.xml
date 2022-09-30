@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/tripImageView"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_170sdp"
+            android:layout_margin="@dimen/_10sdp"
+            android:scaleType="centerCrop"
+            tools:src="@drawable/pic_home_screen"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"
+            app:shapeAppearanceOverlay="@style/RoundedImageShape" />
+
+        <TextView
+            android:id="@+id/tripTitleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_50sdp"
+            android:fontFamily="@font/source_sans_pro"
+            tools:text="@string/title"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/_25ssp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tripImageView" />
+
+        <TextView
+            android:id="@+id/tripHistoryText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/source_sans_pro"
+            tools:text="@string/history"
+            android:textColor="#FCFCFD"
+            android:textSize="@dimen/_18ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tripTitleText" />
+
+        <TextView
+            android:id="@+id/tripLeftTimeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:layout_marginEnd="@dimen/_16sdp"
+            android:drawablePadding="@dimen/_5sdp"
+            tools:text="@string/day_left"
+            android:textColor="#FCFCFD"
+            android:textSize="@dimen/_13ssp"
+            app:drawableLeftCompat="@drawable/ic_baseline_access_time_24"
+            app:layout_constraintEnd_toEndOf="@+id/tripImageView"
+            app:layout_constraintTop_toBottomOf="@+id/tripHistoryText" />
+
+        <TextView
+            android:id="@+id/tripItemText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:drawablePadding="@dimen/_5sdp"
+            tools:text="@string/_5_items"
+            android:textColor="#FCFCFD"
+            android:textSize="@dimen/_13ssp"
+            app:drawableLeftCompat="@drawable/ic_baseline_bookmark_24"
+            app:layout_constraintStart_toStartOf="@+id/tripImageView"
+            app:layout_constraintTop_toBottomOf="@+id/tripHistoryText" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

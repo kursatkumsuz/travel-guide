@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/nearbyImageView"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_160sdp"
+            android:layout_margin="@dimen/_10sdp"
+            android:scaleType="centerCrop"
+            tools:src="@drawable/pic_home_screen"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:shapeAppearanceOverlay="@style/RoundedImageShape" />
+
+        <TextView
+            android:id="@+id/nearbyTitleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_40sdp"
+            android:fontFamily="@font/source_sans_pro"
+            tools:text="@string/title"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/_25ssp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/nearbyImageView" />
+
+        <TextView
+            android:id="@+id/nearbySubText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/source_sans_pro"
+            tools:text="@string/title"
+            android:textColor="#FCFCFD"
+            android:textSize="@dimen/_18ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nearbyTitleText" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="@dimen/_48sdp"
+            android:layout_height="@dimen/_18sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_16sdp"
+            app:cardCornerRadius="@dimen/_2sdp"
+            app:cardBackgroundColor="#FF4760"
+            app:layout_constraintStart_toStartOf="@+id/nearbyImageView"
+            app:layout_constraintTop_toTopOf="@+id/nearbyImageView">
+
+            <TextView
+                android:id="@+id/nearbyTypeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="@string/type"
+                android:textColor="#ffffff"
+                android:fontFamily="@font/source_sans_pro"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:textSize="@dimen/_10ssp" />
+        </androidx.cardview.widget.CardView>
+
+        <ImageButton
+            android:id="@+id/nearbyBookmarkButton"
+            android:layout_width="@dimen/_32sdp"
+            android:layout_height="@dimen/_32sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_bookmark"
+            app:layout_constraintEnd_toEndOf="@+id/nearbyImageView"
+            app:layout_constraintTop_toTopOf="@+id/nearbyImageView" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
