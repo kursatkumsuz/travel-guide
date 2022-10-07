@@ -7,14 +7,10 @@
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
         <androidx.cardview.widget.CardView
             android:layout_width="@dimen/_220sdp"
             android:layout_height="@dimen/_240sdp"
-            android:layout_margin="@dimen/_20sdp"
+            android:layout_margin="@dimen/_12sdp"
             app:cardCornerRadius="@dimen/_10sdp"
             app:cardElevation="@dimen/_5sdp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -53,6 +49,5 @@
                 android:textColor="#181A25"
                 android:textSize="@dimen/_16ssp" />
         </androidx.cardview.widget.CardView>
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

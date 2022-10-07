@@ -7,11 +7,6 @@
     <data>
 
     </data>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/homeListImageView"
             android:layout_width="@dimen/_230sdp"
@@ -25,5 +20,4 @@
             app:layout_constraintTop_toTopOf="parent"
             app:shapeAppearanceOverlay="@style/RoundedImageShape" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
