@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="adapterSearchResult"
+            type="com.kursatkumsuz.bootcampfinalprojecttravelapp.presentation.searchresultscreen.adapter.SearchResultRecyclerViewAdapter" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".presentation.searchresultscreen.SearchResultFragment">
+
+        <TextView
+            android:id="@+id/searchResultText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_15ssp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:fontFamily="@font/source_sans_pro"
+            android:text="@string/search_result"
+            android:textColor="#000000"
+            android:textSize="@dimen/_20ssp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/searchResultRecyclerView"
+            android:layout_width="391dp"
+            android:layout_height="768dp"
+            android:adapter="@{adapterSearchResult}"
+            android:paddingBottom="?attr/actionBarSize"
+            tools:listitem="@layout/list_item_trip"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/searchResultText" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottieView"
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="@dimen/_200sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_speed="3"
+            app:lottie_rawRes="@raw/animation_loading" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -6,28 +6,64 @@
     app:startDestination="@id/home">
 
     <fragment
-        android:id="@+id/home"
-        android:name="com.kursatkumsuz.bootcampfinalprojecttravelapp.presentation.homescreen.HomeFragment"
-        android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
-    <fragment
         android:id="@+id/detail"
         android:name="com.kursatkumsuz.bootcampfinalprojecttravelapp.presentation.detailscreen.DetailFragment"
         android:label="fragment_detail"
-        tools:layout="@layout/fragment_detail" />
+        tools:layout="@layout/fragment_detail">
+        <argument
+            android:name="data"
+            app:argType="com.kursatkumsuz.bootcampfinalprojecttravelapp.domain.model.TravelModel[]" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/home"
+        android:name="com.kursatkumsuz.bootcampfinalprojecttravelapp.presentation.homescreen.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_home_to_detail"
+            app:destination="@id/detail" />
+    </fragment>
     <fragment
         android:id="@+id/search"
         android:name="com.kursatkumsuz.bootcampfinalprojecttravelapp.presentation.searchscreen.SearchFragment"
         android:label="fragment_search"
-        tools:layout="@layout/fragment_search" />
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_search_to_detail"
+            app:destination="@id/detail" />
+        <action
+            android:id="@+id/action_search_to_searchDetailFragment"
+            app:destination="@id/searchDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/guide"
         android:name="com.kursatkumsuz.bootcampfinalprojecttravelapp.presentation.guidescreen.GuideFragment"
         android:label="fragment_guide"
-        tools:layout="@layout/fragment_guide" />
+        tools:layout="@layout/fragment_guide" >
+        <action
+            android:id="@+id/action_guide_to_detail"
+            app:destination="@id/detail" />
+        <action
+            android:id="@+id/action_guide_to_searchDetailFragment"
+            app:destination="@id/searchDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/trip"
         android:name="com.kursatkumsuz.bootcampfinalprojecttravelapp.presentation.tripscreen.TripFragment"
         android:label="fragment_trip"
-        tools:layout="@layout/fragment_trip" />
+        tools:layout="@layout/fragment_trip" >
+        <action
+            android:id="@+id/action_trip_to_detail"
+            app:destination="@id/detail" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchDetailFragment"
+        android:name="com.kursatkumsuz.bootcampfinalprojecttravelapp.presentation.searchresultscreen.SearchResultFragment"
+        android:label="fragment_search_detail"
+        tools:layout="@layout/fragment_search_result" >
+        <argument
+            android:name="search"
+            app:argType="string" />
+    </fragment>
 </navigation>

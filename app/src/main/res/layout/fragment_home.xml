@@ -1,68 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#ffffff"
-    tools:context=".presentation.homescreen.HomeFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
+  <data>
+  <variable
+      name="homeAdapter"
+      type="com.kursatkumsuz.bootcampfinalprojecttravelapp.presentation.homescreen.adapter.HomeRecyclerViewAdapter" />
+  </data>
 
-  <com.google.android.material.imageview.ShapeableImageView
-      android:id="@+id/homeImageView"
+  <androidx.constraintlayout.widget.ConstraintLayout
       android:layout_width="match_parent"
-      android:layout_height="@dimen/_300sdp"
-      android:elevation="10dp"
-      android:scaleType="centerCrop"
-      android:src="@drawable/pic_home_screen"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent" />
-
-  <TextView
-      android:id="@+id/textView"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginStart="@dimen/_12sdp"
-      android:elevation="10dp"
-      android:text="@string/where_is_your_next_destination"
-      android:textColor="#ffffff"
-      android:textSize="@dimen/_26ssp"
-      android:textStyle="bold"
-      app:layout_constraintBottom_toTopOf="@+id/materialButton"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="1.0" />
-
-  <com.google.android.material.button.MaterialButton
-      android:id="@+id/materialButton"
-      android:layout_width="@dimen/_80sdp"
-      android:layout_height="@dimen/_140sdp"
-      android:layout_marginStart="4dp"
-      android:layout_marginBottom="@dimen/_15sdp"
-      android:background="@android:color/transparent"
-      android:drawableTop="@drawable/ic_flight"
-      android:elevation="12dp"
-      android:stateListAnimator="@null"
-      android:text="Flight"
-      android:textAllCaps="false"
-      android:textColor="#ffffff"
-      android:textStyle="bold"
-      android:textSize="@dimen/_15sdp"
-      app:layout_constraintBottom_toBottomOf="@+id/homeImageView"
-      app:layout_constraintStart_toStartOf="parent" />
-
-  <TextView
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginStart="@dimen/_18sdp"
-      android:layout_marginTop="@dimen/_20sdp"
-      android:fontFamily="@font/source_sans_pro"
-      android:text="DEALS"
-      android:textColor="#000000"
-      android:textSize="@dimen/_18sdp"
-      android:textStyle="bold"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/homeImageView" />
+      android:layout_height="match_parent"
+      android:background="#ffffff"
+      tools:context=".presentation.home-screen.HomeFragment">
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/homeImageView"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_300sdp"
+        android:elevation="10dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/pic_home_screen"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_12sdp"
+        android:elevation="10dp"
+        android:text="@string/where_is_your_next_destination"
+        android:textColor="#ffffff"
+        android:textSize="@dimen/_26ssp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/materialButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/materialButton"
+        android:layout_width="@dimen/_80sdp"
+        android:layout_height="@dimen/_140sdp"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="@dimen/_15sdp"
+        android:background="@android:color/transparent"
+        android:drawableTop="@drawable/ic_flight"
+        android:elevation="12dp"
+        android:stateListAnimator="@null"
+        android:text="@string/flight"
+        android:textAllCaps="false"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:textSize="@dimen/_15ssp"
+        app:layout_constraintBottom_toBottomOf="@+id/homeImageView"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/dealText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_18sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:fontFamily="@font/source_sans_pro"
+        android:text="@string/deals"
+        android:textColor="#000000"
+        android:textSize="@dimen/_16ssp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/homeImageView" />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        style="@style/CustomTabLayout"
+        app:tabMode="scrollable"
+        app:tabIndicatorFullWidth="false"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dealText">
+
+      <com.google.android.material.tabs.TabItem
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="@string/all" />
+
+      <com.google.android.material.tabs.TabItem
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="@string/flights"
+          tools:layout_editor_absoluteX="196dp"
+          tools:layout_editor_absoluteY="45dp" />
+
+      <com.google.android.material.tabs.TabItem
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="@string/hotels"
+          tools:layout_editor_absoluteX="196dp"
+          tools:layout_editor_absoluteY="45dp" />
+
+      <com.google.android.material.tabs.TabItem
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="@string/transportations"
+          tools:layout_editor_absoluteX="196dp"
+          tools:layout_editor_absoluteY="45dp" />
+
+    </com.google.android.material.tabs.TabLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/homeRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adapter="@{homeAdapter}"
+        tools:listitem="@layout/list_item_home"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tabLayout" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottieView"
+        android:layout_width="@dimen/_200sdp"
+        android:layout_height="@dimen/_200sdp"
+        android:layout_marginTop="@dimen/_300sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_speed="3"
+        app:lottie_rawRes="@raw/animation_loading" />
+
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
