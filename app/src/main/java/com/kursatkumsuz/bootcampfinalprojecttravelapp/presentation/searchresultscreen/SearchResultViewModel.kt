@@ -21,11 +21,15 @@ class SearchResultViewModel @Inject constructor(
         get() = _searchResultList
 
     init {
-
         loadSearchResult()
     }
 
+    /**
+     * Gets all data
+     */
     private fun loadSearchResult() {
+        _searchResultList.value = Resource.loading(null)
+
         viewModelScope.launch {
             _searchResultList.value = useCase.getSearchResult()
 

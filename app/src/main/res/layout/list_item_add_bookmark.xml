@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_80sdp"
+        android:layout_margin="@dimen/_10sdp"
+        app:cardElevation="10dp"
+        app:cardCornerRadius="10dp">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/bottomSheetImageView"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:scaleType="centerCrop"
+            android:layout_gravity="center_vertical"
+            app:shapeAppearanceOverlay="@style/RoundedImageShape"/>
+
+        <TextView
+            android:id="@+id/bottomSheetTitleText"
+            android:layout_width="@dimen/_120sdp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_70sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:fontFamily="@font/source_sans_pro"
+            android:textSize="@dimen/_16ssp"
+            android:textColor="#000000"
+            android:textStyle="bold"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/bottomSheetFab"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:backgroundTint="#DD5F5F"
+            app:tint="#FFFFFF"
+            app:fabCustomSize="@dimen/_40sdp"
+            app:maxImageSize="@dimen/_20sdp"
+            android:src="@drawable/ic_add"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:contentDescription="@string/add_fab_content" />
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>

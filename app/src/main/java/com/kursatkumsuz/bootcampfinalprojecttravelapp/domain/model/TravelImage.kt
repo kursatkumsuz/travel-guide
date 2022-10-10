@@ -4,7 +4,7 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class Image(
+data class TravelImage(
     val altText: String? = null,
     val height: Int,
     val isHeroImage: Boolean,

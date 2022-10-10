@@ -9,6 +9,11 @@ class SearchUseCase @Inject constructor(
     private val searchRepository: SearchRepository
 ) {
 
+    /**
+     * Gets category top data
+     * Checks whether response is successful or not
+     * @return [Resource]
+     */
     suspend fun getTopList(): Resource<List<TravelModel>> {
         return try {
             val response = searchRepository.getTopDestinationList()
@@ -25,6 +30,11 @@ class SearchUseCase @Inject constructor(
         }
     }
 
+    /**
+     * Gets category nearby data
+     * Checks whether response is successful or not
+     * @return [Resource]
+     */
     suspend fun getNearbyList(): Resource<List<TravelModel>> {
         return try {
             val response = searchRepository.getNearbyList()
@@ -41,5 +51,22 @@ class SearchUseCase @Inject constructor(
         }
     }
 
+    /**
+     * Updates value of isBookmark that given id
+     * Checks whether response is successful or not
+     * @param [id] for [updateData]
+     * @param [isBookmark] for [updateData]
+     */
+    suspend fun updateData(id: String, isBookmark: Boolean) {
+
+        val response = searchRepository.updateData(id, isBookmark)
+        try {
+            if (response.isSuccessful) {
+                println(response.message())
+            }
+        } catch (e: Exception) {
+            println(e.localizedMessage)
+        }
+    }
 
 }

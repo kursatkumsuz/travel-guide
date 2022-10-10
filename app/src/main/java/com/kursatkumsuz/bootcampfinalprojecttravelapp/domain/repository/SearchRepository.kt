@@ -9,4 +9,7 @@ interface SearchRepository {
 
     suspend fun getTopDestinationList() : Response<List<TravelModel>>
 
+    suspend fun updateData(id : String, isBookMark: Boolean): Response<TravelModel>
+
+
 }

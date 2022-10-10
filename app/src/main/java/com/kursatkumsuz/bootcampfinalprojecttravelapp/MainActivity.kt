@@ -53,7 +53,12 @@ class MainActivity : AppCompatActivity() {
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
 
-            if (destination.label == "fragment_detail" || destination.label == "fragment_search_detail") {
+            if (destination.label == "fragment_detail"
+                || destination.label == "fragment_search_detail"
+                || destination.label == "SearchImageFragment"
+                || destination.label == "AddTripFragment"
+                || destination.label == "ImageDetailFragment"
+            ) {
                 binding.bottomNavigationView.visibility = View.INVISIBLE
             } else {
                 binding.bottomNavigationView.visibility = View.VISIBLE

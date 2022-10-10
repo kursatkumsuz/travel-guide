@@ -26,8 +26,7 @@ class HomeRecyclerViewAdapter @Inject constructor(
         set(value) = listDiffer.submitList(value)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding =
-            ListItemHomeBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = ListItemHomeBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
 
@@ -46,6 +45,6 @@ class HomeRecyclerViewAdapter @Inject constructor(
     }
 
     override fun getItemCount(): Int {
-        return dataList.take(10).size
+        return dataList.size
     }
 }

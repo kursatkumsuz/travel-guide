@@ -8,7 +8,7 @@
     </data>
 
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="@dimen/_160sdp"
         android:layout_margin="@dimen/_10sdp">
@@ -81,6 +81,6 @@
             app:layout_constraintEnd_toEndOf="@+id/nearbyImageView"
             app:layout_constraintTop_toTopOf="@+id/nearbyImageView" />
 
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
 </layout>

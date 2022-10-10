@@ -84,7 +84,7 @@
                 android:id="@+id/searchTextField"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="@dimen/_280sdp"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/_50sdp"
                 android:layout_marginTop="@dimen/_15sdp"
                 app:endIconMode="custom"
                 app:endIconDrawable="@drawable/ic_search"
@@ -96,13 +96,23 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/searchText"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:drawableTint="#FF667A"
                     android:hint="@string/a_country_a_city_a_place_or_anything"
                     android:textColorHint="#52577A" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/categoryRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/searchTextField" />
             <TextView
                 android:id="@+id/textView8"
                 android:layout_width="wrap_content"
@@ -114,7 +124,7 @@
                 android:textSize="@dimen/_16ssp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/searchTextField" />
+                app:layout_constraintTop_toBottomOf="@+id/categoryRecyclerView" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/topPickRecyclerView"
@@ -122,11 +132,25 @@
                 android:layout_height="wrap_content"
                 android:adapter="@{adapterTopPick}"
                 android:orientation="horizontal"
+                android:paddingBottom="@dimen/_90sdp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView8"
-                tools:listitem="@layout/list_item_guide_bottom" />
+                tools:listitem="@layout/list_item_guide_top_pick" />
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/lottieView"
+                android:layout_width="@dimen/_200sdp"
+                android:layout_height="@dimen/_200sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                app:lottie_rawRes="@raw/animation_loading"
+                app:lottie_speed="3" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -5,14 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.databinding.library.baseAdapters.BR
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
+import com.kursatkumsuz.bootcampfinalprojecttravelapp.R
 import com.kursatkumsuz.bootcampfinalprojecttravelapp.databinding.FragmentHomeBinding
 import com.kursatkumsuz.bootcampfinalprojecttravelapp.domain.model.TravelModel
 import com.kursatkumsuz.bootcampfinalprojecttravelapp.presentation.homescreen.adapter.HomeRecyclerViewAdapter
@@ -43,18 +43,19 @@ class HomeFragment @Inject constructor(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-
-        observeAllList()
+        // Call functions
+        observeAllDataList()
         observeFlightList()
         observeHotelList()
         observeTransportationList()
-        initRecyclerView()
+        setVariable()
         initTabLayout()
-
-
+        addAnimationToButtons()
     }
 
+    /**
+     * Sets value to dataList by clicked tab Item
+     */
     private fun initTabLayout() {
 
         binding.tabLayout.addOnTabSelectedListener(object : OnTabSelectedListener {
@@ -62,14 +63,17 @@ class HomeFragment @Inject constructor(
                 if (tab != null) {
                     when (tab.position) {
                         0 -> {
-                            homeRecyclerViewAdapter.dataList = listAllData.take(10)
+                            homeRecyclerViewAdapter.dataList = listAllData
                         }
+
                         1 -> {
                             homeRecyclerViewAdapter.dataList = flightList
                         }
+
                         2 -> {
                             homeRecyclerViewAdapter.dataList = hotelList
                         }
+
                         3 -> {
                             homeRecyclerViewAdapter.dataList = transportationList
                         }
@@ -77,106 +81,163 @@ class HomeFragment @Inject constructor(
                 }
             }
 
-            override fun onTabUnselected(tab: TabLayout.Tab?) {
+            override fun onTabUnselected(tab: TabLayout.Tab?) {}
 
-            }
-
-            override fun onTabReselected(tab: TabLayout.Tab?) {
-
-            }
+            override fun onTabReselected(tab: TabLayout.Tab?) {}
 
         })
     }
 
-    private fun initRecyclerView() {
+    /**
+     * Sets variable
+     */
+    private fun setVariable() {
 
-        binding.apply {
-            homeRecyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
-            setVariable(BR.homeAdapter, homeRecyclerViewAdapter)
-        }
+        binding.setVariable(BR.homeAdapter, homeRecyclerViewAdapter)
     }
 
-    private fun observeAllList() {
+    /**
+     * Observes allDataList
+     * If status is successful, runs [stopLoadingAnimation] function
+     * If status is successful, filters and excludes data that category is nearby, topdestination , toppick or mightneed
+     * If status is error, runs [showToast] and [stopLoadingAnimation]
+     * If status is loading, shows loading animation
+     */
+    private fun observeAllDataList() {
         viewModel.allDataList.observe(viewLifecycleOwner) { data ->
             data?.let {
                 when (it.status) {
                     Status.SUCCESS -> {
-                        listAllData = it.data as ArrayList<TravelModel>
-                        homeRecyclerViewAdapter.dataList = listAllData.take(10)
+                        listAllData = it.data?.filterNot { i ->
+                            i.category == "nearby" ||
+                                    i.category == "topdestination" ||
+                                    i.category == "toppick" ||
+                                    i.category == "mightneed"
+                        } as ArrayList
+
+                        stopLoadingAnimation()
+                        homeRecyclerViewAdapter.dataList = listAllData
                     }
                     Status.LOADING -> {
-                        Toast.makeText(context, "Loading", Toast.LENGTH_LONG).show()
+                        binding.lottieView.visibility = View.VISIBLE
                     }
                     Status.ERROR -> {
-                        Toast.makeText(context, it.message ?: "Error", Toast.LENGTH_LONG).show()
+                        stopLoadingAnimation()
+                        showToast(it.message)
                     }
                 }
             }
         }
     }
 
+    /**
+     * Observes flightList
+     * If status is successful, runs [stopLoadingAnimation] function
+     * If status is error, runs [showToast] and [stopLoadingAnimation]
+     * If status is loading, shows loading animation
+     */
     private fun observeFlightList() {
-        viewModel.flightList.observe(viewLifecycleOwner, Observer { data ->
+        viewModel.flightList.observe(viewLifecycleOwner)  { data ->
             data?.let {
                 when (it.status) {
                     Status.SUCCESS -> {
-                        flightList = it.data as ArrayList<TravelModel>
-                    }
-                    Status.LOADING -> {
-                        Toast.makeText(context, "Loading...", Toast.LENGTH_LONG).show()
-                    }
-                    Status.ERROR -> {
-                        Toast.makeText(context, it.message ?: "Error", Toast.LENGTH_LONG).show()
-                    }
-                }
-            }
-        })
-    }
-
-    private fun observeHotelList() {
-        viewModel.hotelList.observe(viewLifecycleOwner, Observer { data ->
-            data?.let {
-                when (it.status) {
-                    Status.SUCCESS -> {
-                        hotelList = it.data as ArrayList<TravelModel>
-                    }
-                    Status.LOADING -> {
-                        Toast.makeText(context, "Loading...", Toast.LENGTH_LONG).show()
-                    }
-                    Status.ERROR -> {
-                        Toast.makeText(context, it.message ?: "Error", Toast.LENGTH_LONG).show()
-                    }
-                }
-            }
-        })
-    }
-
-    private fun observeTransportationList() {
-        viewModel.transportationList.observe(viewLifecycleOwner, Observer { data ->
-            data?.let {
-                when (it.status) {
-                    Status.SUCCESS -> {
-                        transportationList = it.data as ArrayList<TravelModel>
+                        flightList = it.data as ArrayList
                         stopLoadingAnimation()
                     }
                     Status.LOADING -> {
-                        Toast.makeText(context, "Loading...", Toast.LENGTH_LONG).show()
                         binding.lottieView.visibility = View.VISIBLE
                     }
                     Status.ERROR -> {
-                        Toast.makeText(context, it.message ?: "Error", Toast.LENGTH_LONG).show()
+                        showToast(it.message)
                         stopLoadingAnimation()
                     }
                 }
             }
-        })
+        }
     }
 
+    /**
+     * Observes hotelList
+     * If status is successful, runs [stopLoadingAnimation] function
+     * If status is error, runs [showToast] and [stopLoadingAnimation]
+     * If status is loading, shows loading animation
+     */
+    private fun observeHotelList() {
+        viewModel.hotelList.observe(viewLifecycleOwner) { data ->
+            data?.let {
+                when (it.status) {
+                    Status.SUCCESS -> {
+                        hotelList = it.data as ArrayList
+                        stopLoadingAnimation()
+                    }
+                    Status.LOADING -> {
+                        binding.lottieView.visibility = View.VISIBLE
+                    }
+                    Status.ERROR -> {
+                        showToast(it.message)
+                        stopLoadingAnimation()
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * Observes transportationList
+     * If status is successful, runs [stopLoadingAnimation] function
+     * If status is error, runs [showToast] and [stopLoadingAnimation]
+     * If status is loading, shows loading animation
+     */
+    private fun observeTransportationList() {
+        viewModel.transportationList.observe(viewLifecycleOwner) { data ->
+            data?.let {
+                when (it.status) {
+                    Status.SUCCESS -> {
+                        transportationList = it.data as ArrayList
+                        stopLoadingAnimation()
+                    }
+                    Status.LOADING -> {
+                        binding.lottieView.visibility = View.VISIBLE
+                    }
+                    Status.ERROR -> {
+                        showToast(it.message)
+                        stopLoadingAnimation()
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * Adds animation to buttons
+     */
+    private fun addAnimationToButtons() {
+        val bounceAnim = AnimationUtils.loadAnimation(context, R.anim.bounce)
+        binding.apply {
+            flightButton.setOnClickListener { flightButton.startAnimation(bounceAnim) }
+            hotelButton.setOnClickListener { hotelButton.startAnimation(bounceAnim) }
+            carsButton.setOnClickListener { carsButton.startAnimation(bounceAnim) }
+            taxiButton.setOnClickListener { taxiButton.startAnimation(bounceAnim) }
+        }
+    }
+
+    /**
+     * Makes lottie view to Invisible
+     * Pauses animation
+     */
     private fun stopLoadingAnimation() {
         binding.apply {
             lottieView.visibility = View.INVISIBLE
             lottieView.pauseAnimation()
         }
+    }
+
+    /**
+     * Shows toast message
+     * @param [message] for [Toast]
+     */
+    private fun showToast(message: String?) {
+        Toast.makeText(context, message ?: "Error", Toast.LENGTH_SHORT).show()
     }
 
 }

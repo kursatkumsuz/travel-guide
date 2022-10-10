@@ -5,6 +5,9 @@
 
     <data>
         <variable
+            name="adapterImages"
+            type="com.kursatkumsuz.bootcampfinalprojecttravelapp.presentation.detailscreen.adapter.DetailImagesRecyclerViewAdapter" />
+        <variable
             name="title"
             type="String" />
 
@@ -26,6 +29,8 @@
             android:layout_height="match_parent"
             tools:context=".presentation.detail-screen.DetailFragment">
 
+
+
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/detailImageView"
                 android:layout_width="match_parent"
@@ -39,8 +44,35 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:shapeAppearanceOverlay="@style/BottomRoundedImageShape" />
 
+            <LinearLayout
+                android:layout_width="@dimen/_280sdp"
+                android:layout_height="@dimen/_60sdp"
+                android:layout_marginTop="@dimen/_220sdp"
+                android:elevation="25dp"
+                android:background="@drawable/background_blur"
+                android:gravity="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/detailImagesRecyclerView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:adapter="@{adapterImages}"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.551"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:itemCount="4"
+                    tools:listitem="@layout/list_item_detail_images" />
+
+            </LinearLayout>
+
             <ImageButton
-                android:id="@+id/expandButton"
+                android:id="@+id/expandImageButton"
                 android:layout_width="@dimen/_44sdp"
                 android:layout_height="@dimen/_44sdp"
                 android:layout_marginTop="@dimen/_15sdp"
@@ -50,6 +82,20 @@
                 android:src="@drawable/ic_expand"
                 android:contentDescription="@string/expandbuttonicon"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/backImageButton"
+                android:layout_width="@dimen/_44sdp"
+                android:layout_height="@dimen/_44sdp"
+                android:layout_marginTop="@dimen/_13sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/backButton"
+                android:elevation="30dp"
+                android:src="@drawable/ic_back"
+                android:tint="#fff"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton
@@ -114,6 +160,23 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/detailDescriptionText" />
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/lottieView"
+                android:layout_width="@dimen/_290sdp"
+                android:layout_height="@dimen/_290sdp"
+                android:visibility="gone"
+                android:layout_marginTop="@dimen/_60sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                app:lottie_speed="3"
+                app:lottie_rawRes="@raw/animation_loading" />
+
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

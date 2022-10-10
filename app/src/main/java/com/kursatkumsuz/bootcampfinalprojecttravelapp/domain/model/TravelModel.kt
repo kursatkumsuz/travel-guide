@@ -10,7 +10,7 @@ data class TravelModel(
     val country: String,
     val description: String,
     val id: String,
-    val images: List<Image>? = null,
+    val images: List<TravelImage>? = null,
     val isBookmark: Boolean,
     val title: String
 ) : Parcelable

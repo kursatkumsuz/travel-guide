@@ -8,41 +8,42 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.RequestManager
 import com.kursatkumsuz.bootcampfinalprojecttravelapp.R
 import com.kursatkumsuz.bootcampfinalprojecttravelapp.databinding.ListItemTripBinding
-import com.kursatkumsuz.bootcampfinalprojecttravelapp.domain.model.TravelModel
-import com.kursatkumsuz.bootcampfinalprojecttravelapp.util.DiffUtil.Companion.diffUtil
+import com.kursatkumsuz.bootcampfinalprojecttravelapp.domain.model.TripEntity
+import com.kursatkumsuz.bootcampfinalprojecttravelapp.util.DiffUtil.Companion.tripDiffUtil
 import javax.inject.Inject
 
 class TripRecyclerViewAdapter @Inject constructor(
-    private var glide: RequestManager
-) : RecyclerView.Adapter<TripRecyclerViewAdapter.TripHolder>() {
+    private val glide: RequestManager
+) : RecyclerView.Adapter<TripRecyclerViewAdapter.TripViewHolder>() {
 
-    class TripHolder(val binding: ListItemTripBinding) : RecyclerView.ViewHolder(binding.root)
+    class TripViewHolder(val binding: ListItemTripBinding) : RecyclerView.ViewHolder(binding.root)
 
+    private var listDiffer = AsyncListDiffer(this, tripDiffUtil)
 
-    private var listDiffer = AsyncListDiffer(this, diffUtil)
-
-    var dataList: List<TravelModel>
+    var dataList: List<TripEntity>
         get() = listDiffer.currentList
         set(value) = listDiffer.submitList(value)
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TripHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TripViewHolder {
         val binding = ListItemTripBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return TripHolder(binding)
+        return TripViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: TripHolder, position: Int) {
-
+    override fun onBindViewHolder(holder: TripViewHolder, position: Int) {
         //Animation
         val animation = AnimationUtils.loadAnimation(holder.itemView.context, R.anim.bounce)
         holder.itemView.startAnimation(animation)
 
         holder.binding.apply {
-            glide.load(dataList[position].images?.get(0)?.url).into(tripImageView)
+            holder.binding.tripTitleText.text = dataList[position].title
+            holder.binding.tripItemText.text = "1 Image"
+            holder.binding.tripHistoryText.text = "${dataList[position].startDate} - ${dataList[position].endDate}"
+            holder.binding.tripLeftTimeText.text = "${dataList[position].totalDay} Days"
+            glide.load(dataList[position].imageUrl).into(tripImageView)
         }
     }
 
     override fun getItemCount(): Int {
-        return dataList.size
+       return dataList.size
     }
-
 }

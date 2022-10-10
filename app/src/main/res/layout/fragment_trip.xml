@@ -15,7 +15,7 @@
         tools:context=".presentation.tripscreen.TripFragment">
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/tripPlanText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_12sdp"
@@ -31,15 +31,17 @@
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabLayout"
-            android:layout_width="@dimen/_200sdp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/CustomTabLayout"
             app:tabInlineLabel="true"
             app:tabIconTint="@color/colors"
+            app:tabIndicatorFullWidth="false"
+            app:tabMode="scrollable"
             android:layout_marginStart="@dimen/_12sdp"
             android:layout_marginTop="@dimen/_20sdp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView5">
+            app:layout_constraintTop_toBottomOf="@+id/tripPlanText">
 
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
@@ -57,19 +59,36 @@
 
         </com.google.android.material.tabs.TabLayout>
 
+
+        <TextView
+            android:id="@+id/deleteInfoText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:fontFamily="@font/source_sans_pro"
+            android:text="Swipe Left to Delete"
+            android:textColor="#5D5E61"
+            android:textSize="@dimen/_11ssp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tabLayout" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/tripRecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:adapter="@{adapterTrip}"
+            android:layout_height="0dp"
+            android:orientation="vertical"
             android:paddingBottom="?attr/actionBarSize"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:orientation="vertical"
-            tools:listitem="@layout/list_item_trip"
-            tools:itemCount="1"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tabLayout" />
+            app:layout_constraintTop_toBottomOf="@+id/deleteInfoText"
+            app:layout_constraintVertical_bias="0.0"
+            tools:itemCount="1"
+            tools:listitem="@layout/list_item_trip" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/addTripFab"

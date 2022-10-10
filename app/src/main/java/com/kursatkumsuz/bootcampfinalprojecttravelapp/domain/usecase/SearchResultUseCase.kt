@@ -1,16 +1,19 @@
 package com.kursatkumsuz.bootcampfinalprojecttravelapp.domain.usecase
 
-import androidx.lifecycle.LiveData
 import com.kursatkumsuz.bootcampfinalprojecttravelapp.domain.model.TravelModel
 import com.kursatkumsuz.bootcampfinalprojecttravelapp.domain.repository.SearchResultRepository
 import com.kursatkumsuz.bootcampfinalprojecttravelapp.util.Resource
-import java.util.*
 import javax.inject.Inject
 
 class SearchResultUseCase @Inject constructor(
     private val repository: SearchResultRepository
 ) {
 
+    /**
+     * Gets all data
+     * Checks whether response is successful or not
+     * @return [Resource]
+     */
     suspend fun getSearchResult(): Resource<List<TravelModel>> {
         return try {
             val response = repository.getSearchResult()

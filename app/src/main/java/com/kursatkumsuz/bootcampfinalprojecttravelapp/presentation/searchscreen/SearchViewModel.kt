@@ -28,16 +28,35 @@ class SearchViewModel @Inject constructor(
         loadTopDestinationList()
         loadNearbyList()
     }
-
+    /**
+     * Gets data that category is top destination
+     */
     private fun loadTopDestinationList() {
+        _topDestinationList.value = Resource.loading(null)
         viewModelScope.launch {
             _topDestinationList.value = useCase.getTopList()
         }
     }
-
+    /**
+     * Gets data that category is nearby
+     */
     private fun loadNearbyList() {
+        _nearbyList.value = Resource.loading(null)
         viewModelScope.launch {
             _nearbyList.value = useCase.getNearbyList()
+        }
+    }
+
+    /**
+     * Updates value of isBookmark that given id
+     * @param [id] for update data
+     * @param [isBookmark] for update data
+     */
+    fun updateData(id: String, isBookmark: Boolean) {
+        viewModelScope.launch {
+            if (id.isNotEmpty()) {
+                useCase.updateData(id, isBookmark)
+            }
         }
     }
 }

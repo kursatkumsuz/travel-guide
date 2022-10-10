@@ -10,33 +10,31 @@
     <androidx.cardview.widget.CardView
         android:layout_width="@dimen/_108sdp"
         android:layout_height="@dimen/_125sdp"
-        android:layout_margin="@dimen/_12sdp">
+        android:layout_margin="@dimen/_12sdp"
+        app:cardCornerRadius="@dimen/_6sdp">
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/guideTopImageView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            tools:src="@drawable/pic_home_screen"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.476"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.523"
-            app:shapeAppearanceOverlay="@style/RoundedImageShape" />
+            tools:src="@drawable/pic_home_screen" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/gradient_color"/>
 
         <TextView
             android:id="@+id/guideTopTitleText"
-            android:layout_width="@dimen/_88sdp"
+            android:layout_width="@dimen/_85sdp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="92dp"
+            android:layout_marginTop="@dimen/_70sdp"
+            android:layout_marginLeft="@dimen/_5sdp"
             tools:text="@string/title"
+            android:textStyle="bold"
             android:textColor="#ffffff"
-            android:textSize="@dimen/_18ssp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideTopImageView" />
+            android:textSize="@dimen/_15ssp" />
 
 
     </androidx.cardview.widget.CardView>

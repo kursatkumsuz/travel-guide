@@ -9,6 +9,11 @@ class HomeUseCase @Inject constructor(
     private val homeRepository: HomeRepository
 ) {
 
+    /**
+     * Gets all data
+     * Checks whether response is successful or not
+     * @return [Resource]
+     */
     suspend fun getAllList() : Resource<List<TravelModel>> {
 
         return try {
@@ -26,6 +31,11 @@ class HomeUseCase @Inject constructor(
         }
     }
 
+    /**
+     * Gets category flight data
+     * Checks whether response is successful or not
+     * @return [Resource]
+     */
     suspend fun getFlightList() : Resource<List<TravelModel>> {
 
         return try {
@@ -43,6 +53,11 @@ class HomeUseCase @Inject constructor(
         }
     }
 
+    /**
+     * Gets category hotel data
+     * Checks whether response is successful or not
+     * @return [Resource]
+     */
     suspend fun getHotelList() : Resource<List<TravelModel>> {
 
         return try {
@@ -60,6 +75,11 @@ class HomeUseCase @Inject constructor(
         }
     }
 
+    /**
+     * Gets category transportation data
+     * Checks whether response is successful or not
+     * @return [Resource]
+     */
     suspend fun getTransportationList() : Resource<List<TravelModel>> {
 
         return try {
@@ -76,5 +96,6 @@ class HomeUseCase @Inject constructor(
             Resource.error("No Data", null)
         }
     }
+
 
 }

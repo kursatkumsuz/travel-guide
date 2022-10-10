@@ -13,6 +13,14 @@
         <argument
             android:name="data"
             app:argType="com.kursatkumsuz.bootcampfinalprojecttravelapp.domain.model.TravelModel[]" />
+        <action
+            android:id="@+id/action_detail_to_trip"
+            app:destination="@id/trip"
+            app:popUpTo="@id/home"
+            app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/action_detail_to_imageDetailFragment"
+            app:destination="@id/imageDetailFragment" />
     </fragment>
 
     <fragment
@@ -56,6 +64,9 @@
         <action
             android:id="@+id/action_trip_to_detail"
             app:destination="@id/detail" />
+        <action
+            android:id="@+id/action_trip_to_chooseBottomSheet"
+            app:destination="@id/chooseBottomSheet" />
     </fragment>
     <fragment
         android:id="@+id/searchDetailFragment"
@@ -66,4 +77,54 @@
             android:name="search"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/addTripFragment"
+        android:name="com.kursatkumsuz.bootcampfinalprojecttravelapp.presentation.addtripscreen.AddTripFragment"
+        android:label="AddTripFragment" >
+        <action
+            android:id="@+id/action_addTripFragment_to_searchImageFragment"
+            app:destination="@id/searchImageFragment"
+         />
+        <action
+            android:id="@+id/action_addTripFragment_to_trip"
+            app:destination="@id/trip" />
+    </fragment>
+    <dialog
+        android:id="@+id/addBookmarkFragment"
+        android:name="com.kursatkumsuz.bootcampfinalprojecttravelapp.presentation.addbookmarkscreen.AddBookmarkFragment"
+        android:label="fragment_bottom_sheet"
+        tools:layout="@layout/fragment_add_bookmark" >
+        <action
+            android:id="@+id/action_addBookmarkFragment_to_trip"
+            app:destination="@id/trip" />
+    </dialog>
+    <fragment
+        android:id="@+id/searchImageFragment"
+        android:name="com.kursatkumsuz.bootcampfinalprojecttravelapp.presentation.searchimagescreen.SearchImageFragment"
+        android:label="SearchImageFragment" >
+        <action
+            android:id="@+id/action_searchImageFragment_to_addTripFragment"
+            app:destination="@id/addTripFragment"
+            app:popUpTo="@id/searchImageFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
+    <dialog
+        android:id="@+id/chooseBottomSheet"
+        android:name="com.kursatkumsuz.bootcampfinalprojecttravelapp.util.ChooseBottomSheet"
+        android:label="ChooseBottomSheet" >
+        <action
+            android:id="@+id/action_chooseBottomSheet_to_addTripFragment"
+            app:destination="@id/addTripFragment" />
+        <action
+            android:id="@+id/action_chooseBottomSheet_to_bottomSheetFragment"
+            app:destination="@id/addBookmarkFragment" />
+    </dialog>
+    <dialog
+        android:id="@+id/imageDetailFragment"
+        android:name="com.kursatkumsuz.bootcampfinalprojecttravelapp.presentation.imagedetailscreen.ImageDetailFragment"
+        android:label="ImageDetailFragment" >
+        <argument
+            android:name="images"
+            app:argType="string[]" />
+    </dialog>
 </navigation>

@@ -1,3 +1,44 @@
 <resources>
     <string name="app_name">Bootcamp Final Project Travel App</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="where_is_your_next_destination">Where\'s your \nnext destination?</string>
+    <string name="homeheadimage">HomeImageView</string>
+    <string name="see_all">See All</string>
+    <string name="type">TYPE</string>
+    <string name="title">Title</string>
+    <string name="history">History</string>
+    <string name="day_left">Day left</string>
+    <string name="_5_items">5 Items</string>
+    <string name="top_pick_articles">Top Pick Articles</string>
+    <string name="add_bookmark">Add Bookmark</string>
+    <string name="guide">Guide</string>
+    <string name="might_need_these">MIGHT NEED THESE</string>
+    <string name="a_country_a_city_a_place_or_anything">A country, a city, a place... or anything</string>
+    <string name="deals">DEALS</string>
+    <string name="all">All</string>
+    <string name="flights">Flights</string>
+    <string name="hotels">Hotels</string>
+    <string name="transportations">Transportations</string>
+    <string name="search">Search</string>
+    <string name="where_next">Where next?</string>
+    <string name="top_destinations">TOP DESTINATIONS</string>
+    <string name="nearby_attractions">NEARBY ATTRACTIONS</string>
+    <string name="trip_plan">Trip Plan</string>
+    <string name="trips">Trips</string>
+    <string name="bookmark">Bookmark</string>
+    <string name="add_a_trip">Add a trip</string>
+    <string name="expandbuttonicon">expandButtonIcon</string>
+    <string name="likebuttonicon">likeButtonIcon</string>
+    <string name="flight">Flight</string>
+    <string name="search_result">Search Result</string>
+    <string name="add_fab_content">add_fab_content</string>
+    <string name="selected_trips_for_you">Selected Trips For You!</string>
+    <string name="hotel">Hotel</string>
+    <string name="cars">Cars</string>
+    <string name="taxi">Taxi</string>
+    <string name="suggested_trips">Suggested Trips</string>
+    <string name="create_your_trip">Create Your Trip</string>
+    <string name="plan_a_new_trip">Plan a new trip</string>
+    <string name="backButton">backButton</string>
 </resources>

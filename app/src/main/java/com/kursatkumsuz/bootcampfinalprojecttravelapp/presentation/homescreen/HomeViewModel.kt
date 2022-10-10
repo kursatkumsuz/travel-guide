@@ -39,26 +39,40 @@ class HomeViewModel @Inject constructor(
         loadTransportationList()
     }
 
+    /**
+     * Gets all data list
+     */
     private fun loadAllList() {
         viewModelScope.launch {
             _allDataList.value = useCase.getAllList()
         }
     }
 
+    /**
+     * Gets data that category is flight
+     */
     private fun loadFlightList() {
         viewModelScope.launch {
             _flightList.value = useCase.getFlightList()
         }
     }
 
+    /**
+     * Gets data that category is hotel
+     */
     private fun loadHotelList() {
         viewModelScope.launch {
             _hotelList.value = useCase.getHotelList()
         }
     }
+
+    /**
+     * Gets data that category is transportation
+     */
     private fun loadTransportationList() {
         viewModelScope.launch {
             _transportationList.value = useCase.getTransportationList()
         }
     }
+
 }

@@ -3,4 +3,5 @@
 
     <item android:drawable="@drawable/ic_guide" android:state_checked="false" />
     <item android:drawable="@drawable/ic_guide_filled" android:state_checked="true" />
+
 </selector>

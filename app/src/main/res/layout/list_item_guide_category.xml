@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/categoryCardView"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_35sdp"
+        android:layout_margin="@dimen/_10sdp"
+        app:cardCornerRadius="99dp">
+
+        <TextView
+            android:id="@+id/categoryTitleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#0048F0"
+            android:textStyle="bold"
+            android:paddingStart="@dimen/_5sdp"
+            android:paddingEnd="@dimen/_20sdp"
+            android:layout_marginStart="@dimen/_30sdp"
+            android:layout_gravity="center_vertical"
+            android:fontFamily="@font/source_sans_pro"
+            android:text="Category Title"/>
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/categoryIconImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:src="@drawable/ic_sightseeing"
+            android:layout_gravity="center_vertical"
+            android:scaleType="fitXY"
+            android:tint="#0048F0"/>
+    </androidx.cardview.widget.CardView>
+</layout>

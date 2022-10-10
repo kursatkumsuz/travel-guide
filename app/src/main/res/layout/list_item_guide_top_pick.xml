@@ -7,7 +7,7 @@
 
     </data>
 
-        <androidx.cardview.widget.CardView
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="@dimen/_220sdp"
             android:layout_height="@dimen/_240sdp"
             android:layout_margin="@dimen/_12sdp"
@@ -19,14 +19,26 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/guideBottomImageView"
+                android:id="@+id/guideTopPickmageView"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_160sdp"
                 android:scaleType="centerCrop"
                 tools:src="@drawable/pic_home_screen" />
 
+            <ImageButton
+                android:id="@+id/guideTopPickBookmarkButton"
+                android:layout_width="@dimen/_32sdp"
+                android:layout_height="@dimen/_32sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginEnd="@dimen/_15sdp"
+                android:layout_gravity="end"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_bookmark"
+                app:layout_constraintEnd_toEndOf="@+id/nearbyImageView"
+                app:layout_constraintTop_toTopOf="@+id/nearbyImageView" />
+
             <TextView
-                android:id="@+id/guideBottomTypeText"
+                android:id="@+id/guideTopPickTypeText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_12sdp"
@@ -38,7 +50,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/guideBottomTitleText"
+                android:id="@+id/guideTopPickTitleText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_12sdp"
@@ -48,6 +60,6 @@
                 android:textStyle="bold"
                 android:textColor="#181A25"
                 android:textSize="@dimen/_16ssp" />
-        </androidx.cardview.widget.CardView>
+        </com.google.android.material.card.MaterialCardView>
 
 </layout>

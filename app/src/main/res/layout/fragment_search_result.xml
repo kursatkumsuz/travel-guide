@@ -15,30 +15,45 @@
         android:layout_height="match_parent"
         tools:context=".presentation.searchresultscreen.SearchResultFragment">
 
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/searchResultText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_15ssp"
-            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_18ssp"
             android:fontFamily="@font/source_sans_pro"
             android:text="@string/search_result"
             android:textColor="#000000"
             android:textSize="@dimen/_20ssp"
             android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/searchResultRecyclerView"
-            android:layout_width="391dp"
-            android:layout_height="768dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="20dp"
             android:adapter="@{adapterSearchResult}"
             android:paddingBottom="?attr/actionBarSize"
-            tools:listitem="@layout/list_item_trip"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.483"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/searchResultText" />
+            app:layout_constraintTop_toBottomOf="@+id/searchResultText"
+            tools:listitem="@layout/list_item_trip" />
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/lottieView"
@@ -50,8 +65,8 @@
             app:layout_constraintTop_toTopOf="parent"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
-            app:lottie_speed="3"
-            app:lottie_rawRes="@raw/animation_loading" />
+            app:lottie_rawRes="@raw/animation_loading"
+            app:lottie_speed="3" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
