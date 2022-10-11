@@ -1,20 +1,20 @@
-# Patika & FMSS Bilişim Teknoloji Bootcamp Final Project
-
-# Guide Travel App
+# Patika & FMSS Bilişim Bootcamp Final Project - Guide Travel App
 
 
-  # Tech I Used
+## Used Technologies
   
- Clean Architecture + MVVM
- Hilt
- Navigation Compose
- LiveData
- Kotlin Coroutines
- Retrofit
- Room
+*  Clean Architecture + MVVM
+*  Hilt
+*  Navigation Compose
+*  LiveData
+*  Kotlin Coroutines
+*  Room
+*  Retrofit
+*  Glide
+
  
 
-# 📸 Project Video
+## 📸 Project Video
 
 https://user-images.githubusercontent.com/59700175/195120660-e495d315-1c2d-475d-bb63-71d97c4228bc.mov
 
