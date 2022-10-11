@@ -7,9 +7,11 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface ImageApiService {
+
     @GET("/api/")
     suspend fun searchImage(
         @Query("q") searchString: String,
-        @Query("key")  apiKey : String = PIXABAY_API_KEY
-    ) : Response<ImageModel>
+        @Query("key") apiKey: String = PIXABAY_API_KEY
+    ): Response<ImageModel>
+
 }
