@@ -133,8 +133,9 @@ class GuideFragment @Inject constructor(
     }
 
     /**
-     * Observes categoryList
-     * Sets RecyclerView adapter
+     * Observes topPickList
+     * If status is successful, runs [stopLoadingAnimation] function
+     * If status is error, runs [showToast] and [stopLoadingAnimation]
      */
     private fun observeCategoryList() {
         viewModel.categoryList.observe(viewLifecycleOwner) {
