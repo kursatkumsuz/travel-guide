@@ -76,6 +76,9 @@
         <argument
             android:name="search"
             app:argType="string" />
+        <action
+            android:id="@+id/action_searchDetailFragment_to_detail"
+            app:destination="@id/detail" />
     </fragment>
     <fragment
         android:id="@+id/addTripFragment"

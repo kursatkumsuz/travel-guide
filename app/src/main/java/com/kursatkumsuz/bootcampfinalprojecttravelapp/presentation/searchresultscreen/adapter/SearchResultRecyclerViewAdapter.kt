@@ -1,14 +1,18 @@
 package com.kursatkumsuz.bootcampfinalprojecttravelapp.presentation.searchresultscreen.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.RequestManager
 import com.kursatkumsuz.bootcampfinalprojecttravelapp.R
 import com.kursatkumsuz.bootcampfinalprojecttravelapp.databinding.ListItemTripBinding
 import com.kursatkumsuz.bootcampfinalprojecttravelapp.domain.model.TravelModel
+import com.kursatkumsuz.bootcampfinalprojecttravelapp.presentation.searchresultscreen.SearchResultFragmentDirections
+import com.kursatkumsuz.bootcampfinalprojecttravelapp.presentation.tripscreen.TripFragmentDirections
 import com.kursatkumsuz.bootcampfinalprojecttravelapp.util.DiffUtil.Companion.diffUtil
 import javax.inject.Inject
 
@@ -37,7 +41,15 @@ class SearchResultRecyclerViewAdapter @Inject constructor(
         holder.itemView.startAnimation(animation)
 
         holder.binding.apply {
+            tripTitleText.text = dataList[position].title
+            tripItemText.text = "${dataList[position].images?.size} Images"
+            tripLeftTimeText.visibility = View.INVISIBLE
             glide.load(dataList[position].images?.get(0)?.url).into(tripImageView)
+        }
+        // Navigate -> DetailFragment
+        holder.itemView.setOnClickListener {
+            val action = SearchResultFragmentDirections.actionSearchDetailFragmentToDetail(arrayOf(dataList[position]))
+            Navigation.findNavController(it).navigate(action)
         }
     }
 
