@@ -9,8 +9,6 @@ import android.widget.Toast
 import androidx.databinding.library.baseAdapters.BR
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.kursatkumsuz.bootcampfinalprojecttravelapp.databinding.FragmentGuideBinding
 import com.kursatkumsuz.bootcampfinalprojecttravelapp.domain.model.GuideCategoryModel
 import com.kursatkumsuz.bootcampfinalprojecttravelapp.domain.model.TravelModel
@@ -24,14 +22,14 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class GuideFragment @Inject constructor(
     private val mightNeedAdapter: MightNeedRecyclerViewAdapter,
-    private val topPickAdapter: TopPickRecyclerViewAdapter
+    private val topPickAdapter: TopPickRecyclerViewAdapter,
+    private val categoryAdapter : GuideCategoryRecyclerViewAdapter
 ) : Fragment() {
 
     private lateinit var binding: FragmentGuideBinding
     private val viewModel by viewModels<GuideViewModel>()
     private var mightNeedList = ArrayList<TravelModel>()
     private var topPickList = ArrayList<TravelModel>()
-    private  var categoryAdapter = GuideCategoryRecyclerViewAdapter(arrayListOf())
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -79,6 +77,7 @@ class GuideFragment @Inject constructor(
         binding.apply {
             setVariable(BR.adapterTopPick, topPickAdapter)
             setVariable(BR.adapterMightNeed, mightNeedAdapter)
+            setVariable(BR.adapterCategory , categoryAdapter)
         }
     }
 
@@ -139,9 +138,17 @@ class GuideFragment @Inject constructor(
      */
     private fun observeCategoryList() {
         viewModel.categoryList.observe(viewLifecycleOwner) {
-            it?.let {
-                categoryAdapter = GuideCategoryRecyclerViewAdapter(it as ArrayList)
-                binding.categoryRecyclerView.adapter = categoryAdapter
+            when (it.status) {
+                Status.SUCCESS -> {
+                    categoryAdapter.dataList = it.data as ArrayList<GuideCategoryModel>
+                    println("list = ${categoryAdapter.dataList}")
+                    stopLoadingAnimation()
+                }
+                Status.LOADING -> {}
+                Status.ERROR -> {
+                    showToast(it.message)
+                    stopLoadingAnimation()
+                }
             }
         }
     }

@@ -13,6 +13,11 @@
             name="adapterTopPick"
             type="com.kursatkumsuz.bootcampfinalprojecttravelapp.presentation.guidescreen.adapter.TopPickRecyclerViewAdapter" />
 
+        <variable
+            name="adapterCategory"
+            type="com.kursatkumsuz.bootcampfinalprojecttravelapp.presentation.guidescreen.adapter.GuideCategoryRecyclerViewAdapter" />
+
+
     </data>
 
     <androidx.core.widget.NestedScrollView
@@ -109,6 +114,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_12sdp"
                 android:orientation="horizontal"
+                android:adapter="@{adapterCategory}"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

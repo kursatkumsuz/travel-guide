@@ -4,7 +4,6 @@ import com.kursatkumsuz.bootcampfinalprojecttravelapp.data.remote.TravelApiServi
 import com.kursatkumsuz.bootcampfinalprojecttravelapp.domain.model.GuideCategoryModel
 import com.kursatkumsuz.bootcampfinalprojecttravelapp.domain.model.TravelModel
 import com.kursatkumsuz.bootcampfinalprojecttravelapp.domain.repository.GuideRepository
-import com.kursatkumsuz.bootcampfinalprojecttravelapp.util.GuideCategoryConstants.Companion.getCategory
 import retrofit2.Response
 
 class GuideRepositoryImp(private val apiService: TravelApiService) : GuideRepository {
@@ -30,9 +29,9 @@ class GuideRepositoryImp(private val apiService: TravelApiService) : GuideReposi
         return apiService.updateData(id, isBookMark)
     }
     /**
-     * @return [List]
+     * @return [Response]
      */
-    override suspend fun getCategories(): List<GuideCategoryModel> {
-        return getCategory()
+    override suspend fun getCategories(): Response<List<GuideCategoryModel>> {
+        return apiService.getGuideCategories()
     }
 }

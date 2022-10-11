@@ -18,8 +18,8 @@ class GuideViewModel @Inject constructor(
 ) : ViewModel() {
 
 
-    private var _categoryList = MutableLiveData<List<GuideCategoryModel>>()
-    val categoryList: LiveData<List<GuideCategoryModel>>
+    private var _categoryList = MutableLiveData<Resource<List<GuideCategoryModel>>>()
+    val categoryList: LiveData<Resource<List<GuideCategoryModel>>>
         get() = _categoryList
 
     private var _mightNeedList = MutableLiveData<Resource<List<TravelModel>>>()

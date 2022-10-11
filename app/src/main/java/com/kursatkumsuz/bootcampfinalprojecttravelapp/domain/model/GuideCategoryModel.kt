@@ -1,8 +1,8 @@
 package com.kursatkumsuz.bootcampfinalprojecttravelapp.domain.model
 
-import androidx.annotation.DrawableRes
 
 data class GuideCategoryModel(
-    val title: String,
-    @DrawableRes val icon: Int
+    val id: String,
+    val name: String,
+    val url: String
 )

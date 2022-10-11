@@ -9,6 +9,7 @@ import com.kursatkumsuz.bootcampfinalprojecttravelapp.presentation.addbookmarksc
 import com.kursatkumsuz.bootcampfinalprojecttravelapp.presentation.detailscreen.DetailFragment
 import com.kursatkumsuz.bootcampfinalprojecttravelapp.presentation.detailscreen.adapter.DetailImagesRecyclerViewAdapter
 import com.kursatkumsuz.bootcampfinalprojecttravelapp.presentation.guidescreen.GuideFragment
+import com.kursatkumsuz.bootcampfinalprojecttravelapp.presentation.guidescreen.adapter.GuideCategoryRecyclerViewAdapter
 import com.kursatkumsuz.bootcampfinalprojecttravelapp.presentation.guidescreen.adapter.MightNeedRecyclerViewAdapter
 import com.kursatkumsuz.bootcampfinalprojecttravelapp.presentation.guidescreen.adapter.TopPickRecyclerViewAdapter
 import com.kursatkumsuz.bootcampfinalprojecttravelapp.presentation.homescreen.HomeFragment
@@ -39,6 +40,7 @@ class AppFragmentFactory @Inject constructor(
     private val searchImageRecyclerViewAdapter: SearchImageRecyclerViewAdapter,
     private val detailImagesRecyclerViewAdapter: DetailImagesRecyclerViewAdapter,
     private val bottomSheetRecyclerViewAdapter: AddBookmarkAdapter,
+    private val guideCategoryRecyclerViewAdapter: GuideCategoryRecyclerViewAdapter,
     private val viewPagerAdapter: ViewPagerAdapter,
     private val glide: RequestManager,
 ) : FragmentFactory() {
@@ -58,7 +60,8 @@ class AppFragmentFactory @Inject constructor(
 
             GuideFragment::class.java.name -> GuideFragment(
                 mightNeedRecyclerViewAdapter,
-                topPickRecyclerViewAdapter
+                topPickRecyclerViewAdapter,
+                guideCategoryRecyclerViewAdapter
             )
 
             TripFragment::class.java.name -> TripFragment(

@@ -73,8 +73,21 @@ class GuideUseCase @Inject constructor(
      * Gets category data
      * @return [List]
      */
-    suspend fun getCategories() : List<GuideCategoryModel> {
-        return guideRepository.getCategories()
+    suspend fun getCategories(): Resource<List<GuideCategoryModel>> {
+        return try {
+            val response = guideRepository.getCategories()
+            if (response.isSuccessful) {
+                response.body()?.let {
+                    return@let Resource.success(it)
+                } ?: Resource.error("No Data", null)
+            } else {
+                Resource.error("No Data", null)
+            }
+
+        } catch (e: Exception) {
+            Resource.error("Error", null)
+        }
     }
+
 
 }

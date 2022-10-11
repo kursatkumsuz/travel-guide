@@ -1,5 +1,6 @@
 package com.kursatkumsuz.bootcampfinalprojecttravelapp.data.remote
 
+import com.kursatkumsuz.bootcampfinalprojecttravelapp.domain.model.GuideCategoryModel
 import com.kursatkumsuz.bootcampfinalprojecttravelapp.domain.model.TravelModel
 import retrofit2.Response
 import retrofit2.http.*
@@ -12,6 +13,9 @@ interface TravelApiService {
      */
     @GET("/allData")
     suspend fun getAllData(): Response<List<TravelModel>>
+
+    @GET("/categories")
+    suspend fun getGuideCategories(): Response<List<GuideCategoryModel>>
 
     /**
      * Gets data from api by categories

@@ -12,6 +12,6 @@ interface GuideRepository {
 
     suspend fun updateData(id : String, isBookMark: Boolean): Response<TravelModel>
 
-    suspend fun getCategories(): List<GuideCategoryModel>
+    suspend fun getCategories(): Response<List<GuideCategoryModel>>
 
 }
