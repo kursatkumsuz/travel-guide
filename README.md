@@ -6,11 +6,17 @@
 *  Clean Architecture + MVVM
 *  Hilt
 *  Navigation Compose
+*  ViewPager2
+*  Fragments
+*  RecyclerView
+*  Bottom Navigation Bar
 *  LiveData
+*  DataBinding
 *  Kotlin Coroutines
 *  Room
 *  Retrofit
 *  Glide
+*  Lottie
 
  
 
