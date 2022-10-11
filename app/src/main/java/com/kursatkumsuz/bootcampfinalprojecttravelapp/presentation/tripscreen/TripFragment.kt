@@ -32,7 +32,6 @@ class TripFragment @Inject constructor(
     private var bookmarkList = ArrayList<TravelModel>()
     private var tripList = ArrayList<TripEntity>()
     private var isTripSelected = true
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -44,9 +43,12 @@ class TripFragment @Inject constructor(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
+        isTripSelected = true
+
         //Call functions
-       viewModel.loadBookMarkList()
-       viewModel.loadTripList()
+        viewModel.loadBookMarkList()
+        viewModel.loadTripList()
         setAdapter()
         initTabLayout()
         navigateChooseBottomSheet()
@@ -57,7 +59,7 @@ class TripFragment @Inject constructor(
     /**
      * Enables Swipe
      */
-    private fun enableSwipe() {
+    private fun enableSwipe(): ItemTouchHelper.SimpleCallback {
         val swipeCallBack = object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
             override fun onMove(
                 recyclerView: RecyclerView,
@@ -76,18 +78,15 @@ class TripFragment @Inject constructor(
                 when (isTripSelected) {
                     true -> {
                         deleteTrip(tripAdapter.dataList[position])
-                        println("isTripSelected True")
                     }
                     false -> {
                         val id = bookmarkAdapter.dataList[position].id
                         deleteBookmark(id)
-                        println("isTripSelected False")
                     }
                 }
             }
         }
-        // Attaches callBack Into RecyclerView
-        ItemTouchHelper(swipeCallBack).attachToRecyclerView(binding.tripRecyclerView)
+        return swipeCallBack
     }
 
     /**
@@ -124,10 +123,15 @@ class TripFragment @Inject constructor(
     private fun setAdapter() {
         binding.apply {
             when (isTripSelected) {
-                true -> tripRecyclerView.adapter = tripAdapter
-                else -> tripRecyclerView.adapter = bookmarkAdapter
+                true -> {
+                    tripRecyclerView.adapter = tripAdapter
+                }
+                else -> {
+                    tripRecyclerView.adapter = bookmarkAdapter
+                }
             }
         }
+        ItemTouchHelper(enableSwipe()).attachToRecyclerView(binding.tripRecyclerView)
     }
 
     /**
@@ -142,7 +146,6 @@ class TripFragment @Inject constructor(
                 Status.SUCCESS -> {
                     bookmarkList = it.data as ArrayList<TravelModel>
                     bookmarkAdapter.dataList = bookmarkList
-                    println("Book mark List ${bookmarkAdapter.dataList}")
                     stopLoadingAnimation()
                 }
                 Status.LOADING -> {
@@ -181,6 +184,7 @@ class TripFragment @Inject constructor(
         viewModel.updateStatus.observe(viewLifecycleOwner) {
             when (it.status) {
                 Status.SUCCESS -> {
+                    bookmarkAdapter.updateList(bookmarkList)
                     stopLoadingAnimation()
                 }
                 Status.LOADING -> {

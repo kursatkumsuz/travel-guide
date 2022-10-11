@@ -11,7 +11,6 @@ import com.bumptech.glide.RequestManager
 import com.kursatkumsuz.bootcampfinalprojecttravelapp.R
 import com.kursatkumsuz.bootcampfinalprojecttravelapp.databinding.ListItemTripBinding
 import com.kursatkumsuz.bootcampfinalprojecttravelapp.domain.model.TravelModel
-import com.kursatkumsuz.bootcampfinalprojecttravelapp.presentation.homescreen.HomeFragmentDirections
 import com.kursatkumsuz.bootcampfinalprojecttravelapp.presentation.tripscreen.TripFragmentDirections
 import com.kursatkumsuz.bootcampfinalprojecttravelapp.util.DiffUtil.Companion.diffUtil
 import javax.inject.Inject
@@ -23,14 +22,22 @@ class BookmarkRecyclerViewAdapter @Inject constructor(
     class BookmarkHolder(val binding: ListItemTripBinding) : RecyclerView.ViewHolder(binding.root)
 
 
-    private var listDiffer = AsyncListDiffer(this, diffUtil)
+    var listDiffer = AsyncListDiffer(this, diffUtil)
 
     var dataList: List<TravelModel>
         get() = listDiffer.currentList
         set(value) = listDiffer.submitList(value)
 
+    fun updateList(list: List<TravelModel>) {
+        listDiffer.submitList(emptyList())
+        if(list.isEmpty()) {
+            listDiffer.submitList(list)
+        }
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookmarkHolder {
-        val binding = ListItemTripBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            ListItemTripBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return BookmarkHolder(binding)
     }
 

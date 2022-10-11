@@ -31,7 +31,7 @@ class TripViewModel @Inject constructor(
 
     fun loadBookMarkList() {
         viewModelScope.launch {
-            _bookmarkList.postValue(useCase.getBookMarkList())
+            _bookmarkList.value = useCase.getBookMarkList()
         }
     }
 
@@ -47,6 +47,7 @@ class TripViewModel @Inject constructor(
             _updateStatus.value = useCase.updateData(id, isBookmark)
             _updateStatus.value = Resource.success(null)
             loadBookMarkList()
+
         }
     }
 
