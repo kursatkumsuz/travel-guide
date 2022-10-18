@@ -1,0 +1,67 @@
+name: Android CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  apk:
+    name: Generate the apk file
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.getVersion.outputs.version }}
+    steps:
+    - uses: actions/checkout@v3
+    - name: set up JDK 11
+      uses: actions/setup-java@v3
+      with:
+        java-version: '11'
+        distribution: 'temurin'
+        cache: gradle
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
+    - name: Build with Gradle
+      run: ./gradlew build
+    - name : Upload APK file
+      uses: actions/upload-artifact@v1
+      with:
+        name: apk
+        path: app/build/outputs/apk/debug/app-debug.apk
+    - name: Get apk info
+      id: apk-info
+      uses: hkusu/apk-info-action@v1
+      with:
+        apk-path: app/build/outputs/apk/debug/app-debug.apk
+    - name: Export apk info
+      id: getVersion
+      run: |
+        echo "::set-output name=version::${{ steps.apk-info.outputs.version-name }}"
+  release:
+    name: Release the apk
+    needs: apk
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download APK from build
+        uses: actions/download-artifact@v1
+        with:
+          name: apk
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: Release${{ needs.apk.outputs.version }}
+          release_name: Release ${{ needs.apk.outputs.version }}
+      - name: Upload Release APK
+        id: upload_release_asset
+        uses: actions/upload-release-asset@v1.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: apk/app-debug.apk
+          asset_name: debug-apk.apk
+          asset_content_type: application/zip
