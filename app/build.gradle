@@ -39,6 +39,9 @@ android {
     buildFeatures {
         dataBinding true
     }
+     lintOptions {
+        abortOnError false
+    }
 }
 
 dependencies {
