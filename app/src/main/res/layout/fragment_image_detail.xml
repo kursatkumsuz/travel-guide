@@ -6,13 +6,13 @@
     <data>
         <variable
             name="adapterViewPager"
-            type="com.kursatkumsuz.bootcampfinalprojecttravelapp.presentation.imagedetailscreen.adapter.ViewPagerAdapter" />
+            type="com.kursatkumsuz.bootcampfinalprojecttravelapp.presentation.imagedetail.adapter.ViewPagerAdapter" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".presentation.imagedetailscreen.ImageDetailFragment">
+        tools:context=".presentation.imagedetail.ImageDetailFragment">
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/viewPager2"

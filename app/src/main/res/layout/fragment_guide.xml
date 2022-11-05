@@ -7,17 +7,11 @@
 
         <variable
             name="adapterMightNeed"
-            type="com.kursatkumsuz.bootcampfinalprojecttravelapp.presentation.guidescreen.adapter.MightNeedRecyclerViewAdapter" />
+            type="com.kursatkumsuz.bootcampfinalprojecttravelapp.presentation.guide.adapter.MightNeedAdapter" />
 
         <variable
             name="adapterTopPick"
-            type="com.kursatkumsuz.bootcampfinalprojecttravelapp.presentation.guidescreen.adapter.TopPickRecyclerViewAdapter" />
-
-        <variable
-            name="adapterCategory"
-            type="com.kursatkumsuz.bootcampfinalprojecttravelapp.presentation.guidescreen.adapter.GuideCategoryRecyclerViewAdapter" />
-
-
+            type="com.kursatkumsuz.bootcampfinalprojecttravelapp.presentation.guide.adapter.TopPickAdapter" />
     </data>
 
     <androidx.core.widget.NestedScrollView
@@ -108,17 +102,7 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/categoryRecyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_12sdp"
-                android:orientation="horizontal"
-                android:adapter="@{adapterCategory}"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/searchTextField" />
+
             <TextView
                 android:id="@+id/textView8"
                 android:layout_width="wrap_content"
@@ -130,7 +114,7 @@
                 android:textSize="@dimen/_16ssp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/categoryRecyclerView" />
+                app:layout_constraintTop_toBottomOf="@+id/searchTextField" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/topPickRecyclerView"

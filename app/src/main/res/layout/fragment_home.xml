@@ -5,9 +5,6 @@
 
     <data>
 
-        <variable
-            name="homeAdapter"
-            type="com.kursatkumsuz.bootcampfinalprojecttravelapp.presentation.homescreen.adapter.HomeRecyclerViewAdapter" />
     </data>
 
     <androidx.core.widget.NestedScrollView
@@ -199,7 +196,6 @@
                 android:id="@+id/homeRecyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:adapter="@{homeAdapter}"
                 android:orientation="horizontal"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"

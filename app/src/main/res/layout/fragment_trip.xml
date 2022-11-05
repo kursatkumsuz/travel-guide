@@ -6,13 +6,13 @@
     <data>
         <variable
             name="adapterTrip"
-            type="com.kursatkumsuz.bootcampfinalprojecttravelapp.presentation.tripscreen.adapter.TripRecyclerViewAdapter" />
+            type="com.kursatkumsuz.bootcampfinalprojecttravelapp.presentation.trip.adapter.TripRecyclerViewAdapter" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".presentation.tripscreen.TripFragment">
+        tools:context=".presentation.trip.TripFragment">
 
         <TextView
             android:id="@+id/tripPlanText"

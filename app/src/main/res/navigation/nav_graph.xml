@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/detail"
-        android:name="com.kursatkumsuz.bootcampfinalprojecttravelapp.presentation.detailscreen.DetailFragment"
+        android:name="com.kursatkumsuz.bootcampfinalprojecttravelapp.presentation.detail.DetailFragment"
         android:label="fragment_detail"
         tools:layout="@layout/fragment_detail">
         <argument
@@ -25,7 +25,7 @@
 
     <fragment
         android:id="@+id/home"
-        android:name="com.kursatkumsuz.bootcampfinalprojecttravelapp.presentation.homescreen.HomeFragment"
+        android:name="com.kursatkumsuz.bootcampfinalprojecttravelapp.presentation.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -34,7 +34,7 @@
     </fragment>
     <fragment
         android:id="@+id/search"
-        android:name="com.kursatkumsuz.bootcampfinalprojecttravelapp.presentation.searchscreen.SearchFragment"
+        android:name="com.kursatkumsuz.bootcampfinalprojecttravelapp.presentation.search.SearchFragment"
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" >
         <action
@@ -46,7 +46,7 @@
     </fragment>
     <fragment
         android:id="@+id/guide"
-        android:name="com.kursatkumsuz.bootcampfinalprojecttravelapp.presentation.guidescreen.GuideFragment"
+        android:name="com.kursatkumsuz.bootcampfinalprojecttravelapp.presentation.guide.GuideFragment"
         android:label="fragment_guide"
         tools:layout="@layout/fragment_guide" >
         <action
@@ -58,7 +58,7 @@
     </fragment>
     <fragment
         android:id="@+id/trip"
-        android:name="com.kursatkumsuz.bootcampfinalprojecttravelapp.presentation.tripscreen.TripFragment"
+        android:name="com.kursatkumsuz.bootcampfinalprojecttravelapp.presentation.trip.TripFragment"
         android:label="fragment_trip"
         tools:layout="@layout/fragment_trip" >
         <action
@@ -70,7 +70,7 @@
     </fragment>
     <fragment
         android:id="@+id/searchDetailFragment"
-        android:name="com.kursatkumsuz.bootcampfinalprojecttravelapp.presentation.searchresultscreen.SearchResultFragment"
+        android:name="com.kursatkumsuz.bootcampfinalprojecttravelapp.presentation.searchresult.SearchResultFragment"
         android:label="fragment_search_detail"
         tools:layout="@layout/fragment_search_result" >
         <argument
@@ -82,7 +82,7 @@
     </fragment>
     <fragment
         android:id="@+id/addTripFragment"
-        android:name="com.kursatkumsuz.bootcampfinalprojecttravelapp.presentation.addtripscreen.AddTripFragment"
+        android:name="com.kursatkumsuz.bootcampfinalprojecttravelapp.presentation.addtrip.AddTripFragment"
         android:label="AddTripFragment" >
         <action
             android:id="@+id/action_addTripFragment_to_searchImageFragment"
@@ -94,7 +94,7 @@
     </fragment>
     <dialog
         android:id="@+id/addBookmarkFragment"
-        android:name="com.kursatkumsuz.bootcampfinalprojecttravelapp.presentation.addbookmarkscreen.AddBookmarkFragment"
+        android:name="com.kursatkumsuz.bootcampfinalprojecttravelapp.presentation.addbookmark.AddBookmarkFragment"
         android:label="fragment_bottom_sheet"
         tools:layout="@layout/fragment_add_bookmark" >
         <action
@@ -103,7 +103,7 @@
     </dialog>
     <fragment
         android:id="@+id/searchImageFragment"
-        android:name="com.kursatkumsuz.bootcampfinalprojecttravelapp.presentation.searchimagescreen.SearchImageFragment"
+        android:name="com.kursatkumsuz.bootcampfinalprojecttravelapp.presentation.searchimage.SearchImageFragment"
         android:label="SearchImageFragment" >
         <action
             android:id="@+id/action_searchImageFragment_to_addTripFragment"
@@ -124,7 +124,7 @@
     </dialog>
     <dialog
         android:id="@+id/imageDetailFragment"
-        android:name="com.kursatkumsuz.bootcampfinalprojecttravelapp.presentation.imagedetailscreen.ImageDetailFragment"
+        android:name="com.kursatkumsuz.bootcampfinalprojecttravelapp.presentation.imagedetail.ImageDetailFragment"
         android:label="ImageDetailFragment" >
         <argument
             android:name="images"

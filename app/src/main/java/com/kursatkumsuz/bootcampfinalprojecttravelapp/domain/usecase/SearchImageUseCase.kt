@@ -1,12 +1,12 @@
 package com.kursatkumsuz.bootcampfinalprojecttravelapp.domain.usecase
 
 import com.kursatkumsuz.bootcampfinalprojecttravelapp.domain.model.ImageModel
-import com.kursatkumsuz.bootcampfinalprojecttravelapp.domain.repository.SearchImageRepository
+import com.kursatkumsuz.bootcampfinalprojecttravelapp.domain.repository.ImageRepository
 import com.kursatkumsuz.bootcampfinalprojecttravelapp.util.Resource
 import javax.inject.Inject
 
 class SearchImageUseCase @Inject constructor(
-    private val searchImageRepository: SearchImageRepository
+    private val searchImageRepository: ImageRepository
 ) {
     /**
      * Gets Images based on given word

@@ -30,16 +30,6 @@ class DiffUtil {
             }
         }
 
-        val imageDiffUtil = object : DiffUtil.ItemCallback<TravelImage>() {
-            override fun areItemsTheSame(oldItem: TravelImage, newItem: TravelImage): Boolean {
-                return oldItem == newItem
-            }
-
-            override fun areContentsTheSame(oldItem: TravelImage, newItem: TravelImage): Boolean {
-                return oldItem == newItem
-            }
-        }
-
         val tripDiffUtil = object : DiffUtil.ItemCallback<TripEntity>() {
             override fun areItemsTheSame(oldItem: TripEntity, newItem: TripEntity): Boolean {
                 return oldItem == newItem

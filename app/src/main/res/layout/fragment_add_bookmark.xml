@@ -6,13 +6,13 @@
     <data>
         <variable
             name="adapterAddBookmark"
-            type="com.kursatkumsuz.bootcampfinalprojecttravelapp.presentation.addbookmarkscreen.adapter.AddBookmarkAdapter" />
+            type="com.kursatkumsuz.bootcampfinalprojecttravelapp.presentation.addbookmark.adapter.AddBookmarkAdapter" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".presentation.addbookmarkscreen.AddBookmarkFragment">
+        tools:context=".presentation.addbookmark.AddBookmarkFragment">
 
         <TextView
             android:id="@+id/textView9"

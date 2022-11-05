@@ -1,11 +1,11 @@
 package com.kursatkumsuz.bootcampfinalprojecttravelapp.domain.usecase
 
 import com.kursatkumsuz.bootcampfinalprojecttravelapp.domain.model.TripEntity
-import com.kursatkumsuz.bootcampfinalprojecttravelapp.domain.repository.AddTripRepository
+import com.kursatkumsuz.bootcampfinalprojecttravelapp.domain.repository.TripRepository
 import javax.inject.Inject
 
 class AddTripUseCase @Inject constructor(
-    private val addTripRepository: AddTripRepository
+    private val tripRepository: TripRepository
 ) {
     /**
      * Saves data Into Room database
@@ -20,6 +20,6 @@ class AddTripUseCase @Inject constructor(
         image: String
     ) {
         val trip = TripEntity(title, country, city, startDate, endDate, totalDay, image)
-        addTripRepository.insertTrip(trip)
+        tripRepository.insertTrip(trip)
     }
 }

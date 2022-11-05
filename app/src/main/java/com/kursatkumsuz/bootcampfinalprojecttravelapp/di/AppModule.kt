@@ -106,30 +106,8 @@ object AppModule {
      */
     @Provides
     @Singleton
-    fun provideHomeRepository(apiService: TravelApiService): HomeRepository {
-        return HomeRepositoryImp(apiService)
-    }
-
-    /**
-     * Provides SearchRepository
-     * @param [apiService] for [SearchRepositoryImp]
-     * @return [SearchRepositoryImp]
-     */
-    @Provides
-    @Singleton
-    fun provideSearchRepository(apiService: TravelApiService): SearchRepository {
-        return SearchRepositoryImp(apiService)
-    }
-
-    /**
-     * Provides GuideRepository
-     * @param [apiService] for [GuideRepositoryImp]
-     * @return [GuideRepositoryImp]
-     */
-    @Provides
-    @Singleton
-    fun provideGuideRepository(apiService: TravelApiService): GuideRepository {
-        return GuideRepositoryImp(apiService)
+    fun provideTravelRepository(apiService: TravelApiService): TravelRepository {
+        return TravelRepositoryImp(apiService)
     }
 
     /**
@@ -144,60 +122,15 @@ object AppModule {
         return TripRepositoryImp(apiService, dao)
     }
 
-
-    /**
-     * Provides SearchResultRepository
-     * @param [apiService] for [SearchResultRepositoryImp]
-     * @return [SearchResultRepositoryImp]
-     */
-    @Provides
-    @Singleton
-    fun provideSearchDetailRepository(apiService: TravelApiService): SearchResultRepository {
-        return SearchResultRepositoryImp(apiService)
-    }
-
-    /**
-     * Provides DetailRepository
-     * @param [apiService] for [DetailRepositoryImp]
-     * @return [DetailRepositoryImp]
-     */
-    @Provides
-    @Singleton
-    fun provideDetailRepository(apiService: TravelApiService): DetailRepository {
-        return DetailRepositoryImp(apiService)
-    }
-
     /**
      * Provides SearchImageRepository
-     * @param [apiService] for [SearchImageRepositoryImp]
-     * @return [SearchImageRepositoryImp]
+     * @param [apiService] for [ImageRepositoryImp]
+     * @return [ImageRepositoryImp]
      */
     @Provides
     @Singleton
-    fun provideSearchImageRepository(apiService: ImageApiService): SearchImageRepository {
-        return SearchImageRepositoryImp(apiService)
-    }
-
-    /**
-     * Provides BottomSheetRepository
-     * @param [apiService] for [BottomSheetRepositoryImp]
-     * @return [BottomSheetRepositoryImp]
-     */
-    @Provides
-    @Singleton
-    fun provideBottomSheetRepository(apiService: TravelApiService): BottomSheetRepository {
-        return BottomSheetRepositoryImp(apiService)
-    }
-
-    /**
-     * Provides AddTripRepository
-     * @param [dao] for [AddTripRepositoryImp]
-     * @return [AddTripRepositoryImp]
-     */
-    @Provides
-    @Singleton
-    fun provideAddTripRepository(dao: TripDao): AddTripRepository {
-        return AddTripRepositoryImp(dao)
+    fun provideSearchImageRepository(apiService: ImageApiService): ImageRepository {
+        return ImageRepositoryImp(apiService)
     }
 
     /**
